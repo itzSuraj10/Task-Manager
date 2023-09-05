@@ -12,6 +12,12 @@ class TaskController extends Controller
         $tasks = Task::where('is_completed', 0)->orderBy('id','desc')->get();
         return view('tasks.index', compact('tasks'));
     }
+    
+    public function listAllTask()
+    {
+        $tasks = Task::orderBy('id','desc')->get();
+        return view('tasks.index', compact('tasks'));
+    }
 
     public function store(Request $request)
     {

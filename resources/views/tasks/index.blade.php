@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container">
-    <h1>Show All Task</h1>
+    <h1><input type="checkbox" id="show-all-tasks" {{ Route::currentRouteNamed('list-all-task') ? 'checked' : '' }}>
+        Show All Task
+    </h1>
     <hr>
     <h2>Create Task</h2>
     <form class="d-flex" data-action={{ route('store-task') }} method="Post" id="add-task-form">
@@ -160,6 +162,16 @@
                         swal("Not Deleted!");
                     }
             });
+        });
+
+        $('#show-all-tasks').change(function () {
+            const showAll= $(this).prop('checked');
+            
+            if (showAll) {
+                window.location.href = "{{ route('list-all-task') }}";
+            } else {
+                window.location.href = "{{ route('list-task') }}";
+            }
         });
     });
 </script>
