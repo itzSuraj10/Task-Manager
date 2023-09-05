@@ -14,3 +14,11 @@ use App\Http\Controllers\TaskController;
 |
 */
 
+Route::redirect('/', '/tasks');
+
+
+// Task
+Route::get('/tasks', [TaskController::class, 'index'])->name('list-task');
+Route::post('/tasks', [TaskController::class, 'store'])->name('store-task');
+Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('update-task');
+Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('delete-task');
